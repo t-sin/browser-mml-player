@@ -1,0 +1,32 @@
+{
+  "name": "browser-mml-player",
+  "version": "1.0.0",
+  "description": "Music Macro Language player on browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build ./player.html",
+    "start": "parcel serve ./player.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/t-sin/browser-mml-player.git"
+  },
+  "keywords": [
+    "mml",
+    "music macro language",
+    "web audio api",
+    "audio",
+    "music"
+  ],
+  "author": "Shinichi Tanaka <shinichi.tanaka45@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/t-sin/browser-mml-player/issues"
+  },
+  "homepage": "https://github.com/t-sin/browser-mml-player#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "parsel": "^0.3.0"
+  }
+}
