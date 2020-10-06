@@ -17,4 +17,5 @@ npm start
 
 ## License
 
-...
+This program is licensed under the ISC license.
+For more details, see [LICENSE](LICENSE).
