@@ -1,6 +1,6 @@
 # MML Player for browsers
 
-Sample code for the article [Synthesizer introduction with WebAuio API]().
+Sample code for the article [Synthesizer introduction with Web Auido API]().
 
 ## How to run
 
