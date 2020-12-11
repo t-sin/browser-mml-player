@@ -97,7 +97,11 @@ const parse = (str) => {
 };
 
 // Create player object which has scheduled notes and events.
-const make_player = (ast) => {};
+const make_player = (ast_list) => {
+  let player = {
+  };
+  return player;
+};
 
 // Start playing.
 const play = (player) => {};
