@@ -86,7 +86,7 @@ const parse = (str) => {
         break;
 
       default:
-        throw Error(`unknown token '$token'`);
+        throw Error(`unknown token '${token}'`);
     }
 
     ast_list.push(node);
