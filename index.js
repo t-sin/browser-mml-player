@@ -116,8 +116,13 @@ const stop = (player) => {};
 let player = null;
 const play_button = () => {
   let mml = document.getElementById('mmlcode').value;
-  player = make_player(parse(mml));
-  play(player);
+
+  try {
+    player = make_player(parse(mml));
+    play(player);
+  } catch (e) {
+    document.getElementById('mmlconsole').innerText = e;
+  }
 }
 
 const stop_button = () => {
