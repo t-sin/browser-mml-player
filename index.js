@@ -98,16 +98,24 @@ const parse = (str) => {
 
 // Create player object which has scheduled notes and events.
 const make_player = (ast_list) => {
+  let ctx = new AudioContext();
+  ctx.suspend();
+
   let player = {
+    'context': ctx,
   };
   return player;
 };
 
 // Start playing.
-const play = (player) => {};
+const play = (player) => {
+  player.context.resume();
+};
 
 // Stop playing.
-const stop = (player) => {};
+const stop = (player) => {
+  player.context.close();
+};
 
 
 ////
@@ -126,7 +134,9 @@ const play_button = () => {
 }
 
 const stop_button = () => {
-  stop(player);
+  if (player !== null) {
+    stop(player);
+  }
 }
 
 // Configure event handlers
