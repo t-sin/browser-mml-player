@@ -13,7 +13,7 @@ npm start
 
 ## Author
 
-- Shinichi Tanaka <shinichi.tanaka45@gmail.com>
+- Shinichi Tanaka (<shinichi.tanaka45@gmail.com>)
 
 ## License
 
