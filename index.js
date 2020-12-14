@@ -28,7 +28,7 @@ const syntax_type = (token) => {
   } else if (syntax_rest.test(token)) {
     return 'rest';
   } else if (syntax_track.test(token)) {
-    return 'track';
+    return 'track_separator';
   } else if (syntax_param.test(token)) {
     return 'param';
   } else {
@@ -69,10 +69,10 @@ const parse = (str) => {
         }
         break;
 
-      case 'track':
+      case 'track_separator':
         match = token.match(syntax_rest);
         node = {
-          'type': 'track',
+          'type': 'track_separator',
         }
         break;
 
