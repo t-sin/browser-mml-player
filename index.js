@@ -49,7 +49,7 @@ const calculate_length = (note_length, bpm) => {
 const syntax_note = /^([cdefgab])([0-9])([+-]?):([0-9]+)$/;
 const syntax_rest = /^([r=]):([0-9]+)$/;
 const syntax_track = /^---$/;
-const syntax_param = /^([^@=]+)=(-?[0-9]+(.[0-9]+))$/;
+const syntax_param = /^@([^@=]+)=(-?[0-9]+(.[0-9]+)?)$/;
 
 const syntax_type = (token) => {
   if (syntax_note.test(token)) {
