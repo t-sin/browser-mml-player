@@ -144,7 +144,79 @@ const make_player = (tracks) => {
 
   let player = {
     'context': ctx,
+    'bpm': 120,
   };
+
+  for (let track of tracks) {
+    // These control pan and volume of this track.
+    let track_panner = new PannerNode(ctx);
+    let track_gain = new GainNode(ctx);
+    // `osc_gain` is for control note on/off by setting its volume.
+    let osc_gain = new GainNode(ctx);
+    let osc = new OscillatorNode(ctx);
+    osc.type = 'square';
+    osc.start();
+    osc_gain.gain.value = 0;
+
+    // Schedules note events and paramater changing events.
+    let time = 0;
+    let freq = 0;
+    let pitch = 0;
+    let len = 0;
+
+    for (let token of track) {
+      switch (token.type) {
+        case 'note':
+          let note_number = calculate_note_number(token.note_name, token.octave, token.half_note);
+          freq = pitch + convert_to_frequency(note_number);
+          len = 0.1;  // TODO: calculate time from note length
+
+          // Set osc sound on.
+          osc.frequency.setValueAtTime(freq, ctx.currentTime + time);
+          osc_gain.gain.setValueAtTime(1, ctx.currentTime + time);
+
+          // Set osc sound off.
+          time += len;
+          osc_gain.gain.setValueAtTime(0, ctx.currentTime + time);
+          break;
+
+        case 'rest':
+          len = 0.1;  // TODO: calculate time from note length
+
+          if (token.note_name == 'r') {
+            // Set osc sound off (rest note).
+            osc_gain.gain.setValueAtTime(0, ctx.currentTime + time);
+
+          } else if (token.note_name == '=') {
+            // Set osc sound on with previously same frequency.
+            osc.frequency.setValueAtTime(freq, ctx.currentTime + time);
+            osc_gain.gain.setValueAtTime(1, ctx.currentTime + time);
+
+            // Set osc sound off.
+            time += len;
+            osc_gain.gain.setValueAtTime(0, ctx.currentTime + time);
+          }
+
+          break;
+
+        case 'param':
+          switch (token.name) {
+            case 'sys.bpm': player.bpm = token.value; break;
+            case 'pan':     track_panner.positionX.setValueAtTime(token.value, time); break;
+            case 'volume':  track_gain.gain.setValueAtTime(token.value, time); break;
+            case 'pitch': pitch = token.value; break;
+          }
+          break;
+      }
+    }
+
+    // Connect track nodes by serial.
+    osc.connect(osc_gain);
+    osc_gain.connect(track_panner);
+    track_panner.connect(track_gain);
+    track_gain.connect(ctx.destination);
+  }
+
   return player;
 };
 
