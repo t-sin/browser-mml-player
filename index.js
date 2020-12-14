@@ -38,6 +38,13 @@ const calculate_note_number = (name, octave, half_note) => {
   return note_number;
 };
 
+// Calculate time from note length and bpm.
+const calculate_length = (note_length, bpm) => {
+  let whole_note_length = bpm / 4;
+  let length_in_time = Math.pow(0.5, note_length - 1);
+  return length_in_time;
+};
+
 // syntactic elements
 const syntax_note = /^([cdefgab])([0-9])([+-]?):([0-9]+)$/;
 const syntax_rest = /^([r=]):([0-9]+)$/;
