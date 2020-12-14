@@ -104,7 +104,6 @@ const split_into_tracks = (tokens) => {
     }
   }
 
-  console.log(tracks);
   return tracks;
 };
 
