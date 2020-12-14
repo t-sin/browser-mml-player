@@ -193,6 +193,7 @@ const make_player = (tracks) => {
           if (token.note_name == 'r') {
             // Set osc sound off (rest note).
             osc_gain.gain.setValueAtTime(0, ctx.currentTime + time);
+            time += len;
 
           } else if (token.note_name == '=') {
             // Set osc sound on with previously same frequency.
