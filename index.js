@@ -176,7 +176,7 @@ const make_player = (tracks) => {
         case 'note':
           let note_number = calculate_note_number(token.note_name, token.octave, token.half_note);
           freq = pitch + convert_to_frequency(note_number);
-          len = 0.1;  // TODO: calculate time from note length
+          len = calculate_length(token.length, player.bpm);
 
           // Set osc sound on.
           osc.frequency.setValueAtTime(freq, ctx.currentTime + time);
@@ -188,7 +188,7 @@ const make_player = (tracks) => {
           break;
 
         case 'rest':
-          len = 0.1;  // TODO: calculate time from note length
+          len = calculate_length(token.length, player.bpm);
 
           if (token.note_name == 'r') {
             // Set osc sound off (rest note).
