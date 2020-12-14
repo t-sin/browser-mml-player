@@ -36,11 +36,8 @@ const syntax_type = (token) => {
   }
 };
 
-////
-// MML Player API
-
-// Parse `str` and return an AST list.
-const parse = (str) => {
+// Parse string and return an array of parsed tokens.
+const parse_tokens = (str) => {
   let tokens = str.split(/[ \n]+/);
   let ast_list = [];
 
@@ -92,12 +89,35 @@ const parse = (str) => {
     ast_list.push(node);
   }
 
-  console.log(ast_list);
   return ast_list;
 };
 
+// Split tokens into arrays by track_separators.
+const split_into_tracks = (tokens) => {
+  let tracks = [[]];
+
+  for (let token of tokens) {
+    if (token.type === 'track_separator') {
+      tracks.push(new Arrau());
+    } else {
+      tracks[tracks.length - 1].push(token);
+    }
+  }
+
+  console.log(tracks);
+  return tracks;
+};
+
+////
+// MML Player API
+
+// Parse `str` and return a track array.
+const parse = (str) => {
+  return split_into_tracks(parse_tokens(str));
+};
+
 // Create player object which has scheduled notes and events.
-const make_player = (ast_list) => {
+const make_player = (tracks) => {
   let ctx = new AudioContext();
   ctx.suspend();
 
