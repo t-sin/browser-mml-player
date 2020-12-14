@@ -158,6 +158,7 @@ const make_player = (tracks) => {
     // These control pan and volume of this track.
     let track_panner = new PannerNode(ctx);
     let track_gain = new GainNode(ctx);
+    track_gain.gain.value = 0.3;
     // `osc_gain` is for control note on/off by setting its volume.
     let osc_gain = new GainNode(ctx);
     let osc = new OscillatorNode(ctx);
