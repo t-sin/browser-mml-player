@@ -98,7 +98,7 @@ const split_into_tracks = (tokens) => {
 
   for (let token of tokens) {
     if (token.type === 'track_separator') {
-      tracks.push(new Arrau());
+      tracks.push(new Array());
     } else {
       tracks[tracks.length - 1].push(token);
     }
