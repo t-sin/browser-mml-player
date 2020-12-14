@@ -27,6 +27,7 @@
   "homepage": "https://github.com/t-sin/browser-mml-player#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
+    "parcel-plugin-inliner": "^1.0.14",
     "parsel": "^0.3.0"
   }
 }
