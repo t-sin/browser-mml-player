@@ -103,7 +103,7 @@ const parse_tokens = (str) => {
         break;
 
       case 'param':
-        match = token.match(syntax_rest);
+        match = token.match(syntax_param);
         node = {
           'type': 'param',
           'name': match[1],
