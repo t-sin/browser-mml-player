@@ -16,6 +16,28 @@ const convert_to_frequency = (notenum) => {
   return freq;
 };
 
+// Calculate MIDI note number from note name, octave and half note.
+const calculate_note_number = (name, octave, half_note) => {
+  let note_number = 0;
+  switch (name) {
+    case 'c': note_number = 60; break;
+    case 'd': note_number = 62; break;
+    case 'e': note_number = 64; break;
+    case 'f': note_number = 65; break;
+    case 'g': note_number = 67; break;
+    case 'a': note_number = 69; break;
+    case 'b': note_number = 71; break;
+  }
+  switch (half_note) {
+    case '+': note_number += 1; break;
+    case '-': note_number -= 1; break;
+    default: break;
+  }
+  note_number += (octave - 4) * 12;
+
+  return note_number;
+};
+
 // syntactic elements
 const syntax_note = /^([cdefgab])([0-9])([+-]?):([0-9]+)$/;
 const syntax_rest = /^([r=]):([0-9]+)$/;
