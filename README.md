@@ -11,6 +11,10 @@ npm i
 npm start
 ```
 
+## Try this in browser
+
+Open this link: https://t-sin.github.io/browser-mml-player/
+
 ## Author
 
 - Shinichi Tanaka (<shinichi.tanaka45@gmail.com>)
