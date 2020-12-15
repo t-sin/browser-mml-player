@@ -67,7 +67,7 @@ const syntax_type = (token) => {
 
 // Parse string and return an array of parsed tokens.
 const parse_tokens = (str) => {
-  let tokens = str.split(/[ \n]+/);
+  let tokens = str.split(/[ \n]+/).filter((s) => s.length !== 0);
   let ast_list = [];
 
   for (token of tokens) {
