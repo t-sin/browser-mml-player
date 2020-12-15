@@ -40,8 +40,8 @@ const calculate_note_number = (name, octave, half_note) => {
 
 // Calculate time from note length and bpm.
 const calculate_length = (note_length, bpm) => {
-  let whole_note_length = bpm / 4;
-  let length_in_time = Math.pow(0.5, note_length - 1);
+  let whole_note_length = (60 / bpm) * 4;
+  let length_in_time = whole_note_length / note_length;
   return length_in_time;
 };
 
