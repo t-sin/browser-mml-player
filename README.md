@@ -1,6 +1,6 @@
 # MML Player for browsers
 
-Sample code for the article [Synthesizer introduction with Web Auido API]().
+Sample code for the article [Synthesizer introduction with Web Auido API](https://www.ubsecure.jp/blog/20201224).
 
 ## How to run
 
